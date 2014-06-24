@@ -60,7 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     db.vm.provision :chef_solo do |chef|
       chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
-      chef.roles_path = ["roles"]
+      #chef.roles_path = ["roles"]
       chef.log_level = ENV['CHEF_LOG'] ? ENV['CHEF_LOG'].to_sym : :info
 
       chef.add_recipe 'redisio::install'
@@ -76,11 +76,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     app.vm.provision :chef_solo do |chef|
       chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
-      chef.roles_path = ["roles"]
-      chef.log_level = ENV['CHEF_LOG'] ? ENV['CHEF_LOG'].to_sym : :info
+      #chef.roles_path = ["roles"]
+      chef.log_level = ENV['CHEF_LOG'] ? ENV['CHEF_LOG'].to_sym : :debug
 
+      #chef.add_recipe 'hashtag-deploy'
+      chef.add_recipe 'apt'
       chef.add_recipe 'java'
-
 
       chef.json = {
           "java" => {

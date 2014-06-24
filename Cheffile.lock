@@ -1,12 +1,16 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
+    apt (2.4.0)
+    curl (2.0.0)
     java (1.22.0)
     redisio (1.7.1)
       ulimit (>= 0.1.2)
     ulimit (0.3.2)
 
 DEPENDENCIES
+  apt (>= 0)
+  curl (>= 0)
   java (>= 0)
   redisio (>= 0)
 
